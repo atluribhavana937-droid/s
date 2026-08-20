@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResuMatch AI - Next-Gen Resume Intelligence & Career Guidance Platform</title>
+  <meta name="description" content="AI-powered Resume Intelligence, ATS Score Checker, Job Match Analysis, Skill Gap Roadmap, AI Resume Rewriter, Mock Voice Interview, and Career Guidance.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Telugu:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Chart.js for Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Glowing Background Orbs -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <div class="app-wrapper">
+    
+    <!-- ====================================================================
+         1. SIDEBAR NAVIGATION
+         ==================================================================== -->
+    <aside class="app-sidebar" id="appSidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <div class="brand-title">ResuMatch <span style="font-weight: 300; font-size: 0.9em;">AI</span></div>
+        <span class="brand-badge">PRO+</span>
+      </div>
+
+      <div class="sidebar-nav">
+        <div class="nav-section-title">Core Navigation</div>
+        <a class="nav-item active" data-view="view-home">
+          <i class="fa-solid fa-house"></i>
+          <span>Home</span>
+        </a>
+        <a class="nav-item" data-view="view-upload">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+          <span>Upload Resume</span>
+          <span class="badge" id="sidebarUploadBadge">Ready</span>
+        </a>
+        <a class="nav-item" data-view="view-dashboard">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Intelligence Hub</span>
+          <span class="badge" id="sidebarResumeScoreBadge">92%</span>
+        </a>
+        <a class="nav-item" data-view="view-ats">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>ATS & Keywords</span>
+          <span class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399;" id="sidebarAtsScoreBadge">88/100</span>
+        </a>
+
+        <div class="nav-section-title">Job & Application CRM</div>
+        <a class="nav-item" data-view="view-tracker">
+          <i class="fa-solid fa-table-list"></i>
+          <span>AI Job Tracker</span>
+          <span class="badge" style="background: var(--primary); color:#fff;" id="sidebarTrackerBadge">4</span>
+        </a>
+        <a class="nav-item" data-view="view-job-match">
+          <i class="fa-solid fa-bullseye"></i>
+          <span>Job Match Analysis</span>
+        </a>
+        <a class="nav-item" data-view="view-multi-job">
+          <i class="fa-solid fa-table-columns"></i>
+          <span>Multiple Job Matrix</span>
+        </a>
+        <a class="nav-item" data-view="view-recommendations">
+          <i class="fa-solid fa-briefcase"></i>
+          <span>Role Recommendations</span>
+        </a>
+        <a class="nav-item" data-view="view-predictor">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Success Predictor</span>
+        </a>
+        <a class="nav-item" data-view="view-scam">
+          <i class="fa-solid fa-user-shield"></i>
+          <span>Job Scam Checker</span>
+        </a>
+
+        <div class="nav-section-title">AI Optimization & Media</div>
+        <a class="nav-item" data-view="view-linkedin">
+          <i class="fa-brands fa-linkedin"></i>
+          <span>LinkedIn Optimizer</span>
+        </a>
+        <a class="nav-item" data-view="view-github">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub & Portfolio</span>
+        </a>
+        <a class="nav-item" data-view="view-templates">
+          <i class="fa-solid fa-file-invoice"></i>
+          <span>1-Click Templates</span>
+        </a>
+        <a class="nav-item" data-view="view-rewriter">
+          <i class="fa-solid fa-pen-nib"></i>
+          <span>AI Resume Rewriter</span>
+        </a>
+        <a class="nav-item" data-view="view-tone">
+          <i class="fa-solid fa-spell-check"></i>
+          <span>Language & Tone</span>
+        </a>
+
+        <div class="nav-section-title">Interview, Voice & Career</div>
+        <a class="nav-item" data-view="view-voice-mock">
+          <i class="fa-solid fa-microphone-lines"></i>
+          <span>Mock Voice Mode</span>
+          <span class="badge" style="background: var(--accent-rose); color:#fff;">LIVE</span>
+        </a>
+        <a class="nav-item" data-view="view-interview">
+          <i class="fa-solid fa-user-tie"></i>
+          <span>AI Interview Studio</span>
+        </a>
+        <a class="nav-item" data-view="view-salary">
+          <i class="fa-solid fa-sack-dollar"></i>
+          <span>Salary Insights</span>
+        </a>
+        <a class="nav-item" data-view="view-goal-planner">
+          <i class="fa-solid fa-bullseye-arrow"></i>
+          <span>Career Goal Planner</span>
+        </a>
+        <a class="nav-item" data-view="view-networking">
+          <i class="fa-solid fa-handshake"></i>
+          <span>Networking Assistant</span>
+        </a>
+        <a class="nav-item" data-view="view-company">
+          <i class="fa-solid fa-building"></i>
+          <span>Company Research</span>
+        </a>
+        <a class="nav-item" data-view="view-freelance">
+          <i class="fa-solid fa-laptop-file"></i>
+          <span>Freelance & Internships</span>
+        </a>
+        <a class="nav-item" data-view="view-recruiter-view">
+          <i class="fa-solid fa-stopwatch"></i>
+          <span>10s Recruiter View</span>
+        </a>
+        <a class="nav-item" data-view="view-telugu">
+          <i class="fa-solid fa-language"></i>
+          <span>తెలుగు Regional Guide</span>
+        </a>
+        <a class="nav-item" data-view="view-roadmap">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Skill Gap Roadmap</span>
+        </a>
+        <a class="nav-item" data-view="view-career-path">
+          <i class="fa-solid fa-stairs"></i>
+          <span>Career Path Ladder</span>
+        </a>
+        <a class="nav-item" data-view="view-cover-letter">
+          <i class="fa-solid fa-envelope-open-text"></i>
+          <span>Cover Letter Studio</span>
+        </a>
+        <a class="nav-item" data-view="view-consistency">
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
+          <span>Consistency & Impact</span>
+        </a>
+        <a class="nav-item" data-view="view-versions">
+          <i class="fa-solid fa-code-branch"></i>
+          <span>Resume Versions</span>
+        </a>
+        <a class="nav-item" data-view="view-privacy">
+          <i class="fa-solid fa-lock"></i>
+          <span>Privacy & Security</span>
+        </a>
+        <a class="nav-item" data-view="view-report">
+          <i class="fa-solid fa-file-invoice"></i>
+          <span>Executive Report</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="active-profile-card">
+          <div class="profile-avatar" id="sidebarAvatar">AC</div>
+          <div class="profile-info">
+            <div class="profile-name" id="sidebarCandidateName">Alex Chen</div>
+            <div class="profile-status">Profile Synced</div>
+          </div>
+          <button class="btn-icon" id="quickSampleBtn" title="Switch Sample Profile" style="width: 28px; height: 28px; font-size: 0.75rem;">
+            <i class="fa-solid fa-arrows-rotate"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         MAIN CONTENT WRAPPER
+         ==================================================================== -->
+    <main class="app-main">
+      
+      <!-- Topbar Header -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="mobile-toggle" id="mobileMenuToggle">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="breadcrumb">
+            <span>ResuMatch Intelligence</span>
+            <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+            <span class="current" id="topbarCurrentView">Home</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Target Job Selector -->
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <label for="globalJobSelect" style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">Target Role:</label>
+            <select id="globalJobSelect" class="form-select" style="width: auto; padding: 0.35rem 0.75rem; font-size: 0.8rem; border-radius: var(--radius-full);">
+              <option value="python_developer">Python Developer</option>
+              <option value="data_analyst">Data Analyst</option>
+              <option value="web_developer">Full-Stack Web Dev</option>
+              <option value="ai_ml_engineer">AI/ML Engineer</option>
+              <option value="software_engineer">Software Engineer</option>
+              <option value="java_developer">Java Developer</option>
+            </select>
+          </div>
+
+          <!-- Regional Telugu Language Quick Toggle -->
+          <button class="btn btn-sm btn-secondary" id="teluguLangToggleBtn" title="Switch to Telugu Guidance">
+            <i class="fa-solid fa-language"></i>
+            <span id="langToggleText">తెలుగు Guide</span>
+          </button>
+
+          <!-- Dark/Light Theme Toggle -->
+          <button class="btn-icon" id="themeToggleBtn" title="Toggle Dark/Light Mode">
+            <i class="fa-solid fa-moon" id="themeIcon"></i>
+          </button>
+
+          <!-- Chatbot Trigger Button in Topbar -->
+          <button class="btn btn-sm btn-primary" id="openChatbotBtn">
+            <i class="fa-solid fa-robot"></i>
+            <span>Ask AI</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Page Views Container -->
+      <div class="page-content">
+
+        <!-- ================================================================
+             VIEW 1: HOME PAGE
+             ================================================================ -->
+        <section id="view-home" class="view-panel active">
+          <div class="hero-section">
+            <div class="hero-pill">
+              <i class="fa-solid fa-sparkles"></i>
+              <span>Next-Gen Career Intelligence Platform • 30+ AI Modules</span>
+            </div>
+            <h1 class="hero-title">
+              Analyze your resume. <br>
+              <span class="gradient-text">Discover your career opportunities.</span>
+            </h1>
+            <p class="hero-subtitle">
+              Comprehensive career acceleration: ATS optimization, Job Tracker CRM, Voice Mock Interviews, LinkedIn & GitHub audits, Salary benchmarks, and Regional Telugu guidance.
+            </p>
+            <div class="hero-cta-group">
+              <button class="btn btn-primary btn-lg" onclick="appRouter.navigate('view-upload')">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <span>Upload Resume</span>
+              </button>
+              <button class="btn btn-secondary btn-lg" onclick="appRouter.navigate('view-tracker')">
+                <i class="fa-solid fa-table-list"></i>
+                <span>Open Job Tracker</span>
+              </button>
+              <button class="btn btn-accent btn-lg" onclick="appRouter.navigate('view-voice-mock')">
+                <i class="fa-solid fa-microphone-lines"></i>
+                <span>Voice Mock Interview</span>
+              </button>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="hero-stats-bar">
+              <div class="hero-stat-item">
+                <div class="hero-stat-number" id="heroResumeScore">92%</div>
+                <div class="hero-stat-label">Resume Score</div>
+              </div>
+              <div class="hero-stat-item">
+                <div class="hero-stat-number" style="color: var(--accent-emerald);" id="heroAtsScore">88/100</div>
+                <div class="hero-stat-label">ATS Compatibility</div>
+              </div>
+              <div class="hero-stat-item">
+                <div class="hero-stat-number" style="color: var(--accent-cyan);" id="heroJobMatchScore">90%</div>
+                <div class="hero-stat-label">Job Match Rate</div>
+              </div>
+              <div class="hero-stat-item">
+                <div class="hero-stat-number" style="color: var(--accent-purple);" id="heroSkillsCount">18+</div>
+                <div class="hero-stat-label">Skills Detected</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Cards Grid -->
+          <div class="feature-cards-grid grid-3">
+            <div class="glass-card glass-card-interactive" onclick="appRouter.navigate('view-tracker')">
+              <div class="feature-card-icon">
+                <i class="fa-solid fa-table-list"></i>
+              </div>
+              <h3 class="card-title">AI Job Tracker & CRM</h3>
+              <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.4rem;">
+                Track Applied, Interviewing, Offer, and Rejected applications with reminders & tailored resume versions.
+              </p>
+            </div>
+
+            <div class="glass-card glass-card-interactive" onclick="appRouter.navigate('view-voice-mock')">
+              <div class="feature-card-icon" style="background: rgba(244, 63, 94, 0.1); color: var(--accent-rose);">
+                <i class="fa-solid fa-microphone-lines"></i>
+              </div>
+              <h3 class="card-title">Mock Interview Voice Mode</h3>
+              <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.4rem;">
+                AI speaks interview questions out loud and analyzes your spoken answer clarity, confidence & filler words.
+              </p>
+            </div>
+
+            <div class="glass-card glass-card-interactive" onclick="appRouter.navigate('view-linkedin')">
+              <div class="feature-card-icon" style="background: rgba(14, 165, 233, 0.1); color: #0284c7;">
+                <i class="fa-brands fa-linkedin"></i>
+              </div>
+              <h3 class="card-title">LinkedIn Profile Optimizer</h3>
+              <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.4rem;">
+                Transform resume into catchy LinkedIn headlines, high-converting About section, and skill tags.
+              </p>
+            </div>
+
+            <div class="glass-card glass-card-interactive" onclick="appRouter.navigate('view-salary')">
+              <div class="feature-card-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald);">
+                <i class="fa-solid fa-sack-dollar"></i>
+              </div>
+              <h3 class="card-title">Salary Insights & High-ROI Skills</h3>
+              <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.4rem;">
+                Role-wise market benchmarks and high-paying skills that unlock +$15k-$30k compensation increases.
+              </p>
+            </div>
+
+            <div class="glass-card glass-card-interactive" onclick="appRouter.navigate('view-recruiter-view')">
+              <div class="feature-card-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--accent-amber);">
+                <i class="fa-solid fa-stopwatch"></i>
+              </div>
+              <h3 class="card-title">10-Second Recruiter View Mode</h3>
+              <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.4rem;">
+                Simulate eye-tracking heatmap, shortlist triggers, and avoid recruiter screening rejection traps.
+              </p>
+            </div>
+
+            <div class="glass-card glass-card-interactive" onclick="appRouter.navigate('view-telugu')">
+              <div class="feature-card-icon" style="background: rgba(192, 132, 252, 0.1); color: var(--accent-purple);">
+                <i class="fa-solid fa-language"></i>
+              </div>
+              <h3 class="card-title">తెలుగు Regional Guidance</h3>
+              <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.4rem;">
+                Easy Telugu explanations of ATS metrics and resume tips for freshers with English output.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW 2: RESUME UPLOAD & PARSER
+             ================================================================ -->
+        <section id="view-upload" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Your Resume</h2>
+                <div class="card-subtitle">Supported formats: PDF, DOCX, or Plain Text. Maximum size 16MB.</div>
+              </div>
+            </div>
+
+            <!-- Drag and drop zone -->
+            <div class="upload-dropzone" id="uploadDropzone">
+              <input type="file" id="resumeFileInput" accept=".pdf,.docx,.txt" style="display: none;">
+              <div class="upload-icon-circle">
+                <i class="fa-solid fa-file-arrow-up"></i>
+              </div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">
+                Drag & Drop your Resume here, or <span style="color: var(--primary-light); text-decoration: underline;">Browse</span>
+              </h3>
+              <p style="color: var(--text-muted); font-size: 0.88rem;">
+                Secure client-side document processing with zero permanent retention.
+              </p>
+            </div>
+
+            <!-- Upload File Info State -->
+            <div class="file-info-bar" id="fileInfoBar">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <i class="fa-solid fa-file-pdf" style="font-size: 1.5rem; color: var(--accent-emerald);"></i>
+                <div>
+                  <div style="font-weight: 700; font-size: 0.9rem;" id="uploadedFileName">Alex_Chen_Resume.pdf</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);" id="uploadedFileSize">142 KB • Ready for extraction</div>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-sm" id="startAnalysisBtn">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Start Complete Analysis</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Preloaded Sample Resumes Selector -->
+          <div class="glass-card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title"><i class="fa-solid fa-folder-open"></i> Or Test with Pre-Loaded Prototype Profiles</h3>
+                <div class="card-subtitle">Instant real-world datasets for students, freshers, and junior engineers.</div>
+              </div>
+            </div>
+
+            <div class="grid-3 sample-resumes-container">
+              <!-- Sample 1 -->
+              <div class="sample-resume-card selected" data-sample="fresher_cs">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                  <span class="badge" style="background: rgba(99, 102, 241, 0.2); color: var(--primary-light);">CS Fresher / Student</span>
+                  <i class="fa-solid fa-circle-check" style="color: var(--primary);"></i>
+                </div>
+                <h4 style="font-size: 1rem; font-weight: 700;">Alex Chen</h4>
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">UC Berkeley CS '26 • Python, React, ML</div>
+                <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4;">
+                  Solid foundational coursework, internship at Nexus Lab, and 3 featured engineering projects.
+                </p>
+              </div>
+
+              <!-- Sample 2 -->
+              <div class="sample-resume-card" data-sample="junior_data_analyst">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                  <span class="badge" style="background: rgba(6, 182, 212, 0.2); color: var(--accent-cyan);">Data Analyst</span>
+                  <i class="fa-regular fa-circle" style="color: var(--text-muted);"></i>
+                </div>
+                <h4 style="font-size: 1rem; font-weight: 700;">Sophia Rodriguez</h4>
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">NYU Data Science • SQL, Tableau, Pandas</div>
+                <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4;">
+                  Business intelligence, cohort churn analysis, automated dashboards saving 8 hours weekly.
+                </p>
+              </div>
+
+              <!-- Sample 3 -->
+              <div class="sample-resume-card" data-sample="junior_fullstack_dev">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                  <span class="badge" style="background: rgba(139, 92, 246, 0.2); color: var(--accent-purple);">Web Developer</span>
+                  <i class="fa-regular fa-circle" style="color: var(--text-muted);"></i>
+                </div>
+                <h4 style="font-size: 1rem; font-weight: 700;">David Kim</h4>
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">UT Austin • TypeScript, React, Node.js</div>
+                <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4;">
+                  Full-stack product engineer with RESTful microservices handling 50k daily requests.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW 3: RESUME INTELLIGENCE DASHBOARD
+             ================================================================ -->
+        <section id="view-dashboard" class="view-panel">
+          <!-- Top KPI Scorecards Grid -->
+          <div class="grid-4" style="margin-bottom: 1.5rem;">
+            <div class="glass-card score-metric-card">
+              <div class="circle-score-gauge">
+                <svg viewBox="0 0 86 86">
+                  <circle class="bg-ring" cx="43" cy="43" r="36"></circle>
+                  <circle class="progress-ring" id="dashboardResumeRing" cx="43" cy="43" r="36" stroke="var(--primary)" stroke-dasharray="226.2" stroke-dashoffset="30"></circle>
+                </svg>
+                <div class="gauge-value" id="dashboardResumeScore">92%</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Resume Quality</div>
+                <div style="font-size: 1.05rem; font-weight: 800;">Excellent</div>
+                <div style="font-size: 0.72rem; color: var(--accent-emerald);"><i class="fa-solid fa-arrow-trend-up"></i> Top 8% of Candidates</div>
+              </div>
+            </div>
+
+            <div class="glass-card score-metric-card">
+              <div class="circle-score-gauge">
+                <svg viewBox="0 0 86 86">
+                  <circle class="bg-ring" cx="43" cy="43" r="36"></circle>
+                  <circle class="progress-ring" id="dashboardAtsRing" cx="43" cy="43" r="36" stroke="var(--accent-emerald)" stroke-dasharray="226.2" stroke-dashoffset="40"></circle>
+                </svg>
+                <div class="gauge-value" id="dashboardAtsScore">88</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">ATS Compatibility</div>
+                <div style="font-size: 1.05rem; font-weight: 800;">Parser Ready</div>
+                <div style="font-size: 0.72rem; color: var(--accent-emerald);"><i class="fa-solid fa-check"></i> Standard Headers</div>
+              </div>
+            </div>
+
+            <div class="glass-card score-metric-card">
+              <div class="circle-score-gauge">
+                <svg viewBox="0 0 86 86">
+                  <circle class="bg-ring" cx="43" cy="43" r="36"></circle>
+                  <circle class="progress-ring" id="dashboardJobMatchRing" cx="43" cy="43" r="36" stroke="var(--accent-cyan)" stroke-dasharray="226.2" stroke-dashoffset="25"></circle>
+                </svg>
+                <div class="gauge-value" id="dashboardJobMatchScore">90%</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Target Job Match</div>
+                <div style="font-size: 1.05rem; font-weight: 800;" id="dashboardTargetJobTitle">Python Dev</div>
+                <div style="font-size: 0.72rem; color: var(--primary-light);">High Alignment</div>
+              </div>
+            </div>
+
+            <div class="glass-card score-metric-card">
+              <div class="circle-score-gauge">
+                <svg viewBox="0 0 86 86">
+                  <circle class="bg-ring" cx="43" cy="43" r="36"></circle>
+                  <circle class="progress-ring" id="dashboardReadinessRing" cx="43" cy="43" r="36" stroke="var(--accent-purple)" stroke-dasharray="226.2" stroke-dashoffset="35"></circle>
+                </svg>
+                <div class="gauge-value" id="dashboardReadinessScore">85</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Job Readiness</div>
+                <div style="font-size: 1.05rem; font-weight: 800;">Interview Primed</div>
+                <div style="font-size: 0.72rem; color: var(--accent-cyan);"><i class="fa-solid fa-bolt"></i> 6 Pillars Audited</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2-1" style="margin-bottom: 1.5rem;">
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+              <div class="glass-card">
+                <div class="card-header">
+                  <h3 class="card-title"><i class="fa-solid fa-cubes"></i> Detected Skills & Taxonomy</h3>
+                  <span class="badge" id="detectedSkillsCountBadge">18 Skills Identified</span>
+                </div>
+                <div id="categorizedSkillsWrap"></div>
+              </div>
+
+              <div class="glass-card">
+                <div class="card-header">
+                  <h3 class="card-title"><i class="fa-solid fa-briefcase"></i> Work Experience & Projects</h3>
+                </div>
+                <h4 style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem;">Experience Timeline</h4>
+                <div class="timeline-list" id="dashboardExperienceTimeline"></div>
+
+                <h4 style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin: 1.5rem 0 1rem;">Featured Projects</h4>
+                <div id="dashboardProjectsList"></div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+              <div class="glass-card">
+                <div class="card-header">
+                  <h3 class="card-title"><i class="fa-solid fa-chart-radar"></i> Multidimensional Competency</h3>
+                </div>
+                <div style="height: 240px; position: relative;">
+                  <canvas id="competencyRadarChart"></canvas>
+                </div>
+              </div>
+
+              <div class="glass-card">
+                <div class="card-header">
+                  <h3 class="card-title" style="color: var(--accent-emerald);"><i class="fa-solid fa-circle-check"></i> Resume Strengths</h3>
+                </div>
+                <div id="dashboardStrengthsList"></div>
+              </div>
+
+              <div class="glass-card">
+                <div class="card-header">
+                  <h3 class="card-title" style="color: var(--accent-amber);"><i class="fa-solid fa-triangle-exclamation"></i> Areas for Improvement</h3>
+                </div>
+                <div id="dashboardImprovementsList"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: AI JOB TRACKER (KANBAN CRM)
+             ================================================================ -->
+        <section id="view-tracker" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-solid fa-table-list"></i> AI Job Application Tracker & CRM</h2>
+                <div class="card-subtitle">Manage all your job applications, tailored resume versions, follow-up dates, and interview notes in one board.</div>
+              </div>
+              <button class="btn btn-primary btn-sm" id="openAddJobModalBtn">
+                <i class="fa-solid fa-plus"></i>
+                <span>Add New Job Application</span>
+              </button>
+            </div>
+
+            <!-- Kanban Columns -->
+            <div class="kanban-board" id="jobTrackerKanban">
+              <!-- Applied Column -->
+              <div class="kanban-column" data-stage="Applied">
+                <div class="kanban-column-header">
+                  <span><i class="fa-solid fa-paper-plane" style="color: var(--primary-light);"></i> Applied (<span id="appliedCount">0</span>)</span>
+                </div>
+                <div class="kanban-cards-list" id="kanbanAppliedList"></div>
+              </div>
+
+              <!-- Interviewing Column -->
+              <div class="kanban-column" data-stage="Interview">
+                <div class="kanban-column-header">
+                  <span><i class="fa-solid fa-comments" style="color: var(--accent-amber);"></i> Interviewing (<span id="interviewCount">0</span>)</span>
+                </div>
+                <div class="kanban-cards-list" id="kanbanInterviewList"></div>
+              </div>
+
+              <!-- Offer Received Column -->
+              <div class="kanban-column" data-stage="Offer">
+                <div class="kanban-column-header">
+                  <span><i class="fa-solid fa-trophy" style="color: var(--accent-emerald);"></i> Offer Received (<span id="offerCount">0</span>)</span>
+                </div>
+                <div class="kanban-cards-list" id="kanbanOfferList"></div>
+              </div>
+
+              <!-- Rejected / Closed Column -->
+              <div class="kanban-column" data-stage="Rejected">
+                <div class="kanban-column-header">
+                  <span><i class="fa-solid fa-ban" style="color: var(--accent-rose);"></i> Closed / Rejected (<span id="rejectedCount">0</span>)</span>
+                </div>
+                <div class="kanban-cards-list" id="kanbanRejectedList"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: RESUME-TO-LINKEDIN OPTIMIZER
+             ================================================================ -->
+        <section id="view-linkedin" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-brands fa-linkedin" style="color: #0284c7;"></i> Resume-to-LinkedIn Profile Optimizer</h2>
+                <div class="card-subtitle">Convert your resume into high-impact LinkedIn headlines, an engaging About section, and discover profile mismatches.</div>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="recalcLinkedinBtn">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                <span>Refresh Optimization</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="grid-2" style="margin-bottom: 1.5rem;">
+            <!-- Suggested Headlines -->
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title"><i class="fa-solid fa-heading"></i> High-Converting Headlines</h3>
+              </div>
+              <div id="linkedinHeadlinesList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div>
+            </div>
+
+            <!-- Profile Mismatch Flags -->
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title" style="color: var(--accent-amber);"><i class="fa-solid fa-triangle-exclamation"></i> Profile Mismatch Audit</h3>
+              </div>
+              <div id="linkedinMismatchesList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div>
+            </div>
+          </div>
+
+          <!-- About Section Generator -->
+          <div class="glass-card">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa-solid fa-paragraph"></i> Optimized LinkedIn "About" Summary</h3>
+              <button class="btn btn-secondary btn-sm" id="copyLinkedinAboutBtn">
+                <i class="fa-regular fa-copy"></i>
+                <span>Copy About Section</span>
+              </button>
+            </div>
+            <textarea id="linkedinAboutTextarea" rows="12" class="form-control" style="font-family: var(--font-main); line-height: 1.6;"></textarea>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: GITHUB & PORTFOLIO ANALYZER
+             ================================================================ -->
+        <section id="view-github" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-brands fa-github"></i> GitHub & Portfolio Quality Analyzer</h2>
+                <div class="card-subtitle">Audit repository structure, readme clarity, test coverage, and map projects to target roles.</div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+              <input type="text" id="githubProfileUrlInput" class="form-control" placeholder="https://github.com/your-username" value="https://github.com/alexchen-tech">
+              <button class="btn btn-primary" id="auditGithubBtn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Audit GitHub Profile</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="grid-3" style="margin-bottom: 1.5rem;">
+            <div class="glass-card" style="text-align: center;">
+              <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">GitHub Quality Score</div>
+              <div style="font-size: 2.2rem; font-weight: 800; color: var(--accent-emerald); margin: 0.35rem 0;" id="githubQualityScore">85/100</div>
+              <div style="font-size: 0.78rem; color: var(--text-secondary);">Top 15% of Developer Portfolios</div>
+            </div>
+
+            <div class="glass-card" style="text-align: center;">
+              <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Repositories Audited</div>
+              <div style="font-size: 2.2rem; font-weight: 800; color: var(--primary-light); margin: 0.35rem 0;" id="githubReposCount">3 Repos</div>
+              <div style="font-size: 0.78rem; color: var(--text-secondary);">Clean Commits & Branching</div>
+            </div>
+
+            <div class="glass-card" style="text-align: center;">
+              <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Top Project for Target Role</div>
+              <div style="font-size: 1.2rem; font-weight: 800; color: var(--accent-cyan); margin: 0.75rem 0;" id="githubTopRepoName">smart-resume-ai</div>
+              <div style="font-size: 0.78rem; color: var(--accent-emerald);">92% Job Relevance Match</div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <!-- Repositories List -->
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title"><i class="fa-solid fa-code-fork"></i> Analyzed Repositories</h3>
+              </div>
+              <div id="githubReposList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div>
+            </div>
+
+            <!-- Missing Portfolio Elements Checklist -->
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title" style="color: var(--accent-amber);"><i class="fa-solid fa-list-check"></i> Missing Portfolio Checklist</h3>
+              </div>
+              <div id="githubMissingList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: SALARY INSIGHTS & COMPENSATION READINESS
+             ================================================================ -->
+        <section id="view-salary" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-solid fa-sack-dollar" style="color: var(--accent-emerald);"></i> Salary Insights & Compensation Readiness</h2>
+                <div class="card-subtitle">Role-wise market benchmarks and high-ROI skills that unlock $15k-$30k compensation increases.</div>
+              </div>
+            </div>
+
+            <div class="grid-3" style="margin-top: 0.5rem;">
+              <div class="glass-card" style="background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.3);">
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Your Estimated Market Value</div>
+                <div style="font-size: 1.8rem; font-weight: 800; color: var(--accent-emerald); margin: 0.35rem 0;" id="salaryEstimatedValue">$86,000 - $108,000</div>
+                <div style="font-size: 0.78rem; color: var(--text-secondary);">Based on verified Python, React & SQL skills</div>
+              </div>
+
+              <div class="glass-card">
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Salary Readiness Index</div>
+                <div style="font-size: 1.8rem; font-weight: 800; color: var(--primary-light); margin: 0.35rem 0;" id="salaryReadinessScore">86 / 100</div>
+                <div style="font-size: 0.78rem; color: var(--accent-cyan);">Ready for Mid-Tier compensation</div>
+              </div>
+
+              <div class="glass-card">
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Target Role Benchmark</div>
+                <div style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0.5rem 0;" id="salaryTargetRole">Python Developer</div>
+                <div style="font-size: 0.78rem; color: var(--text-secondary);">High Demand Tier in Tech Hubs</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <!-- Market Benchmarks by Tier -->
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title"><i class="fa-solid fa-chart-simple"></i> Experience Tier Benchmarks</h3>
+              </div>
+              <div id="salaryTierBenchmarksList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div>
+            </div>
+
+            <!-- High-ROI Skills to Unlock Next Tier -->
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title" style="color: var(--accent-cyan);"><i class="fa-solid fa-arrow-trend-up"></i> High-ROI Skills to Unlock Higher Pay</h3>
+              </div>
+              <div id="salaryHighRoiSkillsList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: JOB SCAM & RISK CHECKER
+             ================================================================ -->
+        <section id="view-scam" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-solid fa-user-shield" style="color: var(--accent-rose);"></i> Job Scam & Recruitment Risk Checker</h2>
+                <div class="card-subtitle">Audit suspicious job postings for Telegram interview requests, upfront payment traps, or generic email red flags.</div>
+              </div>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 1rem;">
+              <div class="form-group">
+                <label class="form-label">Company Name</label>
+                <input type="text" id="scamCompanyInput" class="form-control" placeholder="e.g. Apex Global Innovations">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Offered Salary (Optional)</label>
+                <input type="text" id="scamSalaryInput" class="form-control" placeholder="e.g. $5,000 / week">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Paste Job Description or Recruiter Message</label>
+              <textarea id="scamJdInput" rows="4" class="form-control" placeholder="Paste the job posting, Telegram interview message, or offer email here..."></textarea>
+            </div>
+
+            <button class="btn btn-primary" id="runScamCheckBtn">
+              <i class="fa-solid fa-shield-virus"></i>
+              <span>Scan for Fraud & Red Flags</span>
+            </button>
+          </div>
+
+          <!-- Scam Scan Output -->
+          <div class="glass-card" id="scamResultsCard" style="display: none;">
+            <div class="card-header">
+              <h3 class="card-title" id="scamVerdictTitle"><i class="fa-solid fa-shield-check"></i> Safety Verdict</h3>
+              <span class="badge" id="scamTrustScoreBadge">Trust Score: 95/100</span>
+            </div>
+            <div id="scamRedFlagsList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: RESUME LANGUAGE & TONE CHECKER
+             ================================================================ -->
+        <section id="view-tone" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-solid fa-spell-check"></i> Resume Language & Tone Checker</h2>
+                <div class="card-subtitle">Audit active vs passive voice verbs, eliminate overused buzzwords, and improve sentence conciseness.</div>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="refreshToneBtn">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                <span>Re-scan Language</span>
+              </button>
+            </div>
+
+            <div class="grid-3" style="margin-top: 0.5rem;">
+              <div class="glass-card">
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Professional Tone Rating</div>
+                <div style="font-size: 1.4rem; font-weight: 800; color: var(--accent-emerald); margin: 0.35rem 0;" id="toneRating">Professional</div>
+                <div style="font-size: 0.78rem; color: var(--text-secondary);">Executive-ready language</div>
+              </div>
+
+              <div class="glass-card">
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Active Voice Density</div>
+                <div style="font-size: 1.4rem; font-weight: 800; color: var(--primary-light); margin: 0.35rem 0;" id="toneActivePct">82%</div>
+                <div style="font-size: 0.78rem; color: var(--accent-cyan);">Strong action verbs utilized</div>
+              </div>
+
+              <div class="glass-card">
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Readability Level</div>
+                <div style="font-size: 1.1rem; font-weight: 800; color: var(--text-primary); margin: 0.5rem 0;" id="toneReadability">Grade 10</div>
+                <div style="font-size: 0.78rem; color: var(--text-secondary);">Fast recruiter scanning speed</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <!-- Overused Cliches Detector -->
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title" style="color: var(--accent-amber);"><i class="fa-solid fa-ban"></i> Overused Buzzwords & Cliches</h3>
+              </div>
+              <div id="toneClichesList" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
+            </div>
+
+            <!-- Passive-to-Active Voice Suggestions -->
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title" style="color: var(--accent-emerald);"><i class="fa-solid fa-wand-magic-sparkles"></i> Passive-to-Active Voice Conversions</h3>
+              </div>
+              <div id="toneActiveSuggestionsList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: ONE-CLICK RESUME TEMPLATES
+             ================================================================ -->
+        <section id="view-templates" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-solid fa-file-invoice"></i> One-Click Resume Templates & Builder</h2>
+                <div class="card-subtitle">Instantly switch between 6 recruiter-tested themes and export as clean printable PDF.</div>
+              </div>
+              <button class="btn btn-primary" onclick="window.print()">
+                <i class="fa-solid fa-print"></i>
+                <span>Print / Save PDF</span>
+              </button>
+            </div>
+
+            <!-- Template Switcher Gallery -->
+            <div class="grid-3" style="margin-top: 1rem;">
+              <div class="template-card-preview active" data-template="theme-fresher">
+                <div class="template-thumbnail" style="border-top: 4px solid var(--primary);">
+                  <div style="height: 12px; background: rgba(99, 102, 241, 0.4); width: 60%; margin-bottom: 8px;"></div>
+                  <div style="height: 6px; background: rgba(255,255,255,0.1); width: 90%; margin-bottom: 4px;"></div>
+                  <div style="height: 6px; background: rgba(255,255,255,0.1); width: 75%;"></div>
+                </div>
+                <div style="font-weight: 700; font-size: 0.9rem;">🎓 CS Fresher / Student</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Emphasizes projects & education</div>
+              </div>
+
+              <div class="template-card-preview" data-template="theme-experienced">
+                <div class="template-thumbnail" style="border-left: 4px solid #0f172a;">
+                  <div style="height: 12px; background: rgba(15, 23, 42, 0.4); width: 70%; margin-bottom: 8px;"></div>
+                  <div style="height: 6px; background: rgba(255,255,255,0.1); width: 85%; margin-bottom: 4px;"></div>
+                  <div style="height: 6px; background: rgba(255,255,255,0.1); width: 80%;"></div>
+                </div>
+                <div style="font-weight: 700; font-size: 0.9rem;">💼 Experienced Professional</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Focuses on work impact & metrics</div>
+              </div>
+
+              <div class="template-card-preview" data-template="theme-ats">
+                <div class="template-thumbnail" style="border: 1px dashed #999;">
+                  <div style="height: 10px; background: #666; width: 50%; margin-bottom: 8px;"></div>
+                  <div style="height: 5px; background: #999; width: 95%; margin-bottom: 4px;"></div>
+                  <div style="height: 5px; background: #999; width: 90%;"></div>
+                </div>
+                <div style="font-weight: 700; font-size: 0.9rem;">🤖 Minimalist ATS Linear</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Guaranteed 100% parser pass</div>
+              </div>
+
+              <div class="template-card-preview" data-template="theme-developer">
+                <div class="template-thumbnail" style="border-top: 4px solid var(--accent-cyan);">
+                  <div style="height: 12px; background: rgba(6, 182, 212, 0.4); width: 65%; margin-bottom: 8px;"></div>
+                  <div style="height: 6px; background: rgba(255,255,255,0.1); width: 90%;"></div>
+                </div>
+                <div style="font-weight: 700; font-size: 0.9rem;">💻 Modern Developer</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Highlights GitHub & tech stack</div>
+              </div>
+
+              <div class="template-card-preview" data-template="theme-data">
+                <div class="template-thumbnail" style="border-top: 4px solid var(--accent-emerald);">
+                  <div style="height: 12px; background: rgba(16, 185, 129, 0.4); width: 65%; margin-bottom: 8px;"></div>
+                  <div style="height: 6px; background: rgba(255,255,255,0.1); width: 85%;"></div>
+                </div>
+                <div style="font-weight: 700; font-size: 0.9rem;">📊 Data Analyst & BI</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Highlights SQL, Tableau & metrics</div>
+              </div>
+
+              <div class="template-card-preview" data-template="theme-minimal">
+                <div class="template-thumbnail" style="border: 1px solid #e2e8f0;">
+                  <div style="height: 10px; background: #94a3b8; width: 50%; margin-bottom: 8px;"></div>
+                  <div style="height: 5px; background: #cbd5e1; width: 90%;"></div>
+                </div>
+                <div style="font-weight: 700; font-size: 0.9rem;">⚡ Clean Minimal Grid</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Sleek & modern layout</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Resume Render Sheet -->
+          <div class="glass-card" style="padding: 1rem;">
+            <div id="liveResumePreviewContainer" class="resume-live-sheet theme-fresher">
+              <!-- Live Injected via JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: REGIONAL TELUGU LANGUAGE GUIDANCE
+             ================================================================ -->
+        <section id="view-telugu" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title telugu-text"><i class="fa-solid fa-language" style="color: var(--accent-purple);"></i> తెలుగు Regional Language Support & Career Guidance</h2>
+                <div class="card-subtitle telugu-text">ఫ్రెషర్స్ & విద్యార్థుల కోసం సులభమైన తెలుగు వివరణలు — రెజ్యూమ్ అవుట్‌పుట్ ప్రొఫెషనల్ ఇంగ్లీష్‌లోనే ఉంటుంది!</div>
+              </div>
+              <button class="btn btn-primary btn-sm" id="speakTeluguAudioBtn">
+                <i class="fa-solid fa-volume-high"></i>
+                <span class="telugu-text">వాయిస్ వివరణ వినండి</span>
+              </button>
+            </div>
+
+            <!-- Welcome Message Card in Telugu -->
+            <div style="padding: 1.25rem; background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-md); margin-top: 0.5rem;">
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--primary-light); margin-bottom: 0.5rem;" class="telugu-text">
+                మీ రెజ్యూమ్ విశ్లేషణ ఫలితాలు (Resume Analysis Summary):
+              </h3>
+              <p style="font-size: 0.95rem; color: var(--text-primary); line-height: 1.7;" id="teluguWelcomeText" class="telugu-text">
+                నమస్కారం! మీ రెజ్యూమ్‌ని సమగ్రంగా విశ్లేషించాము. మీ Resume Score 90%+ ఉండటం చాలా మంచిది.
+              </p>
+            </div>
+          </div>
+
+          <!-- Key Metrics Explained in Telugu -->
+          <div class="grid-2" style="margin-bottom: 1.5rem;">
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title telugu-text" style="color: var(--accent-emerald);"><i class="fa-solid fa-shield-halved"></i> ATS స్కోర్ అంటే ఏమిటి?</h3>
+              </div>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;" class="telugu-text" id="teluguAtsExpl">
+                ATS (Applicant Tracking System) అనేది పెద్ద కంపెనీలు వేలకొద్దీ వచ్చే రెజ్యూమ్‌లలో సరైన అభ్యర్థులను ఫిల్టర్ చేయడానికి వాడే AI సాఫ్ట్‌వేర్. ఇందులో పాస్ అవ్వాలంటే సరైన కీవర్డ్స్ ఉండాలి.
+              </p>
+            </div>
+
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title telugu-text" style="color: var(--accent-cyan);"><i class="fa-solid fa-route"></i> స్కిల్ గ్యాప్ & ఎలా నేర్చుకోవాలి?</h3>
+              </div>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;" class="telugu-text" id="teluguSkillGapExpl">
+                మీరు ఎంచుకున్న ఉద్యోగంలో ఎక్కువ జీతం రావడానికి Docker, Cloud (AWS) మరియు Database Indexing నైపుణ్యాలను మా లెర్నింగ్ రోడ్‌మ్యాప్ ద్వారా పూర్తి చేయండి.
+              </p>
+            </div>
+          </div>
+
+          <!-- Quick Glossary Table in Telugu -->
+          <div class="glass-card">
+            <div class="card-header">
+              <h3 class="card-title telugu-text"><i class="fa-solid fa-book"></i> ముఖ్యమైన పదాల తెలుగు అర్థాలు (Quick Glossary)</h3>
+            </div>
+            <div id="teluguGlossaryList" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;"></div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: MOCK INTERVIEW VOICE MODE (WEB SPEECH API)
+             ================================================================ -->
+        <section id="view-voice-mock" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-solid fa-microphone-lines" style="color: var(--accent-rose);"></i> Mock Interview Voice Mode</h2>
+                <div class="card-subtitle">AI interviewer speaks questions out loud. Speak your answers via microphone for real-time delivery feedback & filler word analysis.</div>
+              </div>
+              <span class="badge" style="background: var(--accent-rose); color:#fff;" id="voiceStatusBadge">Mic Ready</span>
+            </div>
+
+            <!-- Current AI Question Voice Player -->
+            <div style="padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-md); text-align: center;">
+              <div style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--primary-light); margin-bottom: 0.4rem;">AI Interviewer Question #<span id="voiceCurrentQIndex">1</span></div>
+              <h3 style="font-size: 1.25rem; font-weight: 800; max-width: 750px; margin: 0 auto 1.25rem;" id="voiceCurrentQuestionText">
+                "How do you manage asynchronous operations and exception handling in Python?"
+              </h3>
+
+              <div style="display: flex; justify-content: center; gap: 0.75rem;">
+                <button class="btn btn-primary btn-sm" id="voiceSpeakQuestionBtn">
+                  <i class="fa-solid fa-volume-high"></i>
+                  <span>Hear Question (AI Voice)</span>
+                </button>
+                <button class="btn btn-secondary btn-sm" id="voiceNextQuestionBtn">
+                  <span>Next Question</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Visualizer & Microphone Trigger -->
+            <div class="voice-interview-visualizer" id="voiceVisualizer">
+              <div class="voice-bar"></div><div class="voice-bar"></div><div class="voice-bar"></div>
+              <div class="voice-bar"></div><div class="voice-bar"></div><div class="voice-bar"></div>
+              <div class="voice-bar"></div><div class="voice-bar"></div><div class="voice-bar"></div>
+            </div>
+
+            <div style="text-align: center; margin: 1.5rem 0 0.5rem;">
+              <button class="mic-pulse-btn" id="voiceMicRecordBtn" title="Click to Speak Answer">
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+              <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-top: 0.75rem;" id="voiceRecordLabel">
+                Click microphone and speak your answer
+              </div>
+            </div>
+
+            <!-- Speech Transcript & Feedback Output -->
+            <div class="grid-2" style="margin-top: 1.5rem;">
+              <div class="glass-card" style="background: rgba(0,0,0,0.2);">
+                <div class="card-header">
+                  <h4 style="font-size: 0.9rem; font-weight: 700;">Live Speech-to-Text Transcript</h4>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-primary); font-style: italic; min-height: 80px;" id="voiceTranscriptText">
+                  (Your spoken answer will appear here in real-time...)
+                </p>
+              </div>
+
+              <div class="glass-card" style="background: rgba(0,0,0,0.2);">
+                <div class="card-header">
+                  <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--accent-emerald);">AI Voice Delivery Diagnostics</h4>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.82rem;">
+                  <div><strong>Clarity Score:</strong> <span style="color: var(--accent-emerald);" id="voiceClarityScore">90%</span></div>
+                  <div><strong>Pacing:</strong> <span style="color: var(--accent-cyan);" id="voicePacingScore">Optimal (135 WPM)</span></div>
+                  <div><strong>Filler Words Detected (umm, like, aa):</strong> <span style="color: var(--accent-rose);" id="voiceFillerWordsCount">0 detected</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: NETWORKING ASSISTANT & COLD OUTREACH
+             ================================================================ -->
+        <section id="view-networking" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-solid fa-handshake" style="color: var(--accent-cyan);"></i> Networking & Cold Outreach Assistant</h2>
+                <div class="card-subtitle">Generate high-converting recruiter InMail, referral requests, HR follow-ups, and offer negotiation messages.</div>
+              </div>
+            </div>
+
+            <div class="grid-3" style="margin-bottom: 1rem;">
+              <div class="form-group">
+                <label class="form-label">Target Company</label>
+                <input type="text" id="netCompanyInput" class="form-control" value="Google">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Target Position</label>
+                <input type="text" id="netRoleInput" class="form-control" value="Software Engineer">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Contact / Recruiter Name</label>
+                <input type="text" id="netContactInput" class="form-control" value="Sarah">
+              </div>
+            </div>
+
+            <button class="btn btn-primary" id="generateOutreachBtn">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Generate 5 Outreach Templates</span>
+            </button>
+          </div>
+
+          <div id="networkingTemplatesContainer" style="display: flex; flex-direction: column; gap: 1.25rem;"></div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: COMPANY RESEARCH ASSISTANT
+             ================================================================ -->
+        <section id="view-company" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-solid fa-building" style="color: var(--primary-light);"></i> Company Pre-Interview Research Assistant</h2>
+                <div class="card-subtitle">Instant dossier on company engineering domain, tech stack, culture notes, and tailored "Why Join Us?" answer.</div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+              <input type="text" id="companyResearchNameInput" class="form-control" placeholder="e.g. Stripe, Google, Spotify, Microsoft" value="Stripe">
+              <button class="btn btn-primary" id="runCompanyResearchBtn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Generate Company Dossier</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="glass-card" id="companyDossierCard">
+            <div class="card-header">
+              <h3 class="card-title" id="dossierCompanyName">Stripe Engineering Dossier</h3>
+              <span class="badge" id="dossierIndustryBadge">Fintech Infrastructure</span>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 1.5rem;">
+              <div>
+                <div class="skill-category-header"><i class="fa-solid fa-microchip"></i> Key Core Tech Stack</div>
+                <div class="skill-badges-wrap" id="dossierTechStack"></div>
+              </div>
+
+              <div>
+                <div class="skill-category-header"><i class="fa-solid fa-heart"></i> Culture & Engineering Values</div>
+                <div id="dossierCultureList" style="font-size: 0.85rem; color: var(--text-secondary);"></div>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+              <div class="skill-category-header"><i class="fa-solid fa-clipboard-question"></i> Likely Interview Deep-Dive Topics</div>
+              <div id="dossierTopicsList" style="font-size: 0.85rem; color: var(--text-secondary);"></div>
+            </div>
+
+            <div style="padding: 1.25rem; background: rgba(99, 102, 241, 0.08); border-left: 3px solid var(--primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+              <div style="font-weight: 700; color: var(--primary-light); margin-bottom: 0.35rem;">🎯 Tailored "Why do you want to join us?" Response:</div>
+              <p style="font-size: 0.88rem; color: var(--text-primary); line-height: 1.6; font-style: italic;" id="dossierWhyJoinAnswer"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: APPLICATION SUCCESS PREDICTOR
+             ================================================================ -->
+        <section id="view-predictor" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-solid fa-chart-line" style="color: var(--accent-emerald);"></i> Application Success Predictor</h2>
+                <div class="card-subtitle">Multi-factor probability model estimating likelihood of securing interview callbacks based on competition & skill match.</div>
+              </div>
+            </div>
+
+            <div class="grid-3" style="margin-top: 0.5rem;">
+              <div class="glass-card" style="text-align: center;">
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Interview Callback Probability</div>
+                <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent-emerald); margin: 0.25rem 0;" id="predictorProbPct">88%</div>
+                <div style="font-size: 0.78rem; color: var(--accent-cyan);" id="predictorTierRating">🔥 Top 12% Applicant Tier</div>
+              </div>
+
+              <div class="glass-card">
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem;">Weighted Mathematical Factors</div>
+                <div id="predictorFactorsList" style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.8rem;"></div>
+              </div>
+
+              <div class="glass-card">
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem;">Actionable Boosters (+25%)</div>
+                <div id="predictorBoostersList" style="font-size: 0.8rem; color: var(--text-secondary);"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: CAREER GOAL PLANNER
+             ================================================================ -->
+        <section id="view-goal-planner" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-solid fa-bullseye-arrow" style="color: var(--accent-cyan);"></i> Career Goal Timeline Planner</h2>
+                <div class="card-subtitle">Define your career target and generate an automated phase-by-phase execution roadmap.</div>
+              </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 0.5rem;">
+              <div class="form-group">
+                <label class="form-label">Target Career Goal</label>
+                <input type="text" id="goalTitleInput" class="form-control" value="Become a Senior Python Developer in 6 months">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Timeframe (Months)</label>
+                <select class="form-select" id="goalTimeframeSelect">
+                  <option value="3">3 Months (Intensive Sprint)</option>
+                  <option value="6" selected>6 Months (Standard Transition)</option>
+                  <option value="12">12 Months (Comprehensive Mastery)</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" id="generateGoalPlanBtn">
+              <i class="fa-solid fa-route"></i>
+              <span>Generate 6-Phase Milestone Plan</span>
+            </button>
+          </div>
+
+          <div class="glass-card">
+            <div class="card-header">
+              <h3 class="card-title"><i class="fa-solid fa-timeline"></i> 6-Phase Execution Roadmap</h3>
+              <span class="badge" id="goalReadinessBadge">35% Complete</span>
+            </div>
+            <div id="goalPhasesContainer" style="display: flex; flex-direction: column; gap: 1rem;"></div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: FREELANCE & INTERNSHIP RECOMMENDATIONS
+             ================================================================ -->
+        <section id="view-freelance" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-solid fa-laptop-file" style="color: var(--accent-emerald);"></i> Freelance Gigs, Internships & Open Source</h2>
+                <div class="card-subtitle">Alternative pathways to gain verified commercial experience and earn before full-time placement.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 Columns for Internships, Freelance Gigs, Open Source -->
+          <div class="grid-3">
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title"><i class="fa-solid fa-graduation-cap" style="color: var(--primary-light);"></i> Featured Internships</h3>
+              </div>
+              <div id="freelanceInternshipsList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div>
+            </div>
+
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title"><i class="fa-solid fa-briefcase" style="color: var(--accent-emerald);"></i> High-Paying Freelance Gigs</h3>
+              </div>
+              <div id="freelanceGigsList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div>
+            </div>
+
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title"><i class="fa-brands fa-github" style="color: var(--accent-cyan);"></i> Good-First-Issue Repos</h3>
+              </div>
+              <div id="freelanceOpenSourceList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             VIEW: 10-SECOND RECRUITER VIEW MODE
+             ================================================================ -->
+        <section id="view-recruiter-view" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title"><i class="fa-solid fa-stopwatch" style="color: var(--accent-amber);"></i> 10-Second Recruiter Eye-Tracking Simulation</h2>
+                <div class="card-subtitle">See your resume through the eyes of a busy technical recruiter scanning in 6-10 seconds.</div>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="restartRecruiterScanBtn">
+                <i class="fa-solid fa-play"></i>
+                <span>Re-run 10s Eye Scan</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="grid-3" style="margin-bottom: 1.5rem;">
+            <div class="glass-card" style="text-align: center;">
+              <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">First Impression Score</div>
+              <div style="font-size: 2.2rem; font-weight: 800; color: var(--accent-emerald); margin: 0.35rem 0;" id="recruiterFirstImpression">92/100</div>
+              <div style="font-size: 0.78rem; color: var(--text-secondary);">Recruiter Attention Retained</div>
+            </div>
+
+            <div class="glass-card" style="text-align: center;">
+              <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Average Scan Time</div>
+              <div style="font-size: 2.2rem; font-weight: 800; color: var(--primary-light); margin: 0.35rem 0;" id="recruiterScanTime">7.4 sec</div>
+              <div style="font-size: 0.78rem; color: var(--text-secondary);">Optimal F-Shape scan pattern</div>
+            </div>
+
+            <div class="glass-card" style="text-align: center;">
+              <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Screening Verdict</div>
+              <div style="font-size: 1.3rem; font-weight: 800; color: var(--accent-emerald); margin: 0.75rem 0;">✅ Shortlist for Phone Screen</div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <!-- High Heat Eye Catchers -->
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title" style="color: var(--accent-rose);"><i class="fa-solid fa-fire"></i> High Heat Eye-Catcher Sections</h3>
+              </div>
+              <div id="recruiterEyeCatchersList"></div>
+            </div>
+
+            <!-- Ignored / Low Heat Sections -->
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title" style="color: var(--text-muted);"><i class="fa-solid fa-snowflake"></i> Skimmed / Ignored Sections</h3>
+              </div>
+              <div id="recruiterIgnoredList"></div>
+            </div>
+          </div>
+
+          <div class="grid-2" style="margin-top: 1.5rem;">
+            <!-- Why Shortlist -->
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title" style="color: var(--accent-emerald);"><i class="fa-solid fa-circle-check"></i> "Why Shortlist?" 3 Top Triggers</h3>
+              </div>
+              <div id="recruiterWhyShortlist"></div>
+            </div>
+
+            <!-- Why Reject Risk Points -->
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title" style="color: var(--accent-rose);"><i class="fa-solid fa-triangle-exclamation"></i> "Why Reject?" Risk Points to Fix</h3>
+              </div>
+              <div id="recruiterWhyReject"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Standard Views (ATS, Job Match, Roadmap, Multi-Job, Recommendations, Rewriter, Cover Letter, Interview, Consistency, Versions, Privacy, Report) -->
+        <section id="view-ats" class="view-panel">
+          <div class="grid-1-2" style="margin-bottom: 1.5rem;">
+            <div class="glass-card">
+              <div class="card-header">
+                <h3 class="card-title"><i class="fa-solid fa-shield-halved"></i> ATS Pass Rating</h3>
+              </div>
+              <div style="text-align: center; padding: 1.5rem 0;">
+                <div class="circle-score-gauge" style="width: 130px; height: 130px; margin: 0 auto 1rem;">
+                  <svg viewBox="0 0 86 86" style="width: 130px; height: 130px;">
+                    <circle class="bg-ring" cx="43" cy="43" r="36"></circle>
+                    <circle class="progress-ring" id="atsPageRing" cx="43" cy="43" r="36" stroke="var(--accent-emerald)" stroke-dasharray="226.2" stroke-dashoffset="25"></circle>
+                  </svg>
+                  <div class="gauge-value" style="font-size: 2rem;" id="atsPageScore">88</div>
+                </div>
+                <div style="font-size: 1.1rem; font-weight: 800;">High ATS Compatibility</div>
+              </div>
+              <div style="border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+                <div class="skill-category-header">ATS Lint Checks</div>
+                <div id="atsChecksList" style="display: flex; flex-direction: column; gap: 0.6rem;"></div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+              <div class="glass-card">
+                <div class="card-header">
+                  <h3 class="card-title"><i class="fa-solid fa-key"></i> Smart Keyword Optimizer</h3>
+                  <span class="badge" id="keywordCoverageBadge">85% Coverage</span>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                  <div class="match-bar-container" style="height: 10px;">
+                    <div class="match-bar-fill" id="keywordCoverageBar" style="width: 85%;"></div>
+                  </div>
+                </div>
+                <div class="grid-2">
+                  <div>
+                    <div class="skill-category-header" style="color: var(--accent-emerald);"><i class="fa-solid fa-check"></i> Matching Keywords</div>
+                    <div class="skill-badges-wrap" id="atsMatchingKeywords"></div>
+                  </div>
+                  <div>
+                    <div class="skill-category-header" style="color: var(--accent-rose);"><i class="fa-solid fa-triangle-exclamation"></i> Missing Keywords</div>
+                    <div class="skill-badges-wrap" id="atsMissingKeywords"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="glass-card">
+                <div class="card-header">
+                  <h3 class="card-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Recommended Insertion Contexts</h3>
+                </div>
+                <div id="atsInsertionsList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="view-job-match" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <h2 class="card-title"><i class="fa-solid fa-bullseye"></i> Compare Against Job Description</h2>
+            </div>
+            <div class="grid-2">
+              <div class="form-group">
+                <label class="form-label">Select Standard Industry Role</label>
+                <select class="form-select" id="jobMatchRoleSelect">
+                  <option value="python_developer">Python Developer</option>
+                  <option value="data_analyst">Data Analyst</option>
+                  <option value="web_developer">Full-Stack Web Developer</option>
+                  <option value="ai_ml_engineer">AI/ML Engineer</option>
+                  <option value="software_engineer">Software Engineer</option>
+                  <option value="java_developer">Java Developer</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Custom Target Role Title (Optional)</label>
+                <input type="text" class="form-control" id="customJobTitleInput" placeholder="e.g. Senior Backend Engineer">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Or Paste Custom Job Description Text</label>
+              <textarea id="customJobDescriptionInput" rows="3" class="form-control"></textarea>
+            </div>
+            <button class="btn btn-primary" id="runJobMatchBtn"><i class="fa-solid fa-calculator"></i> <span>Recalculate Job Match</span></button>
+          </div>
+
+          <div class="grid-3" style="margin-bottom: 1.5rem;">
+            <div class="glass-card" style="text-align: center;">
+              <div class="circle-score-gauge" style="width: 90px; height: 90px; margin: 0 auto 0.75rem;">
+                <svg viewBox="0 0 86 86" style="width: 90px; height: 90px;">
+                  <circle class="bg-ring" cx="43" cy="43" r="36"></circle>
+                  <circle class="progress-ring" id="jobMatchPageRing" cx="43" cy="43" r="36" stroke="var(--primary)" stroke-dasharray="226.2" stroke-dashoffset="25"></circle>
+                </svg>
+                <div class="gauge-value" id="jobMatchPageScore">90%</div>
+              </div>
+              <div style="font-weight: 700;" id="jobMatchRoleNameDisplay">Python Developer</div>
+            </div>
+            <div class="glass-card">
+              <div class="skill-category-header"><i class="fa-solid fa-graduation-cap"></i> Qualification Fit</div>
+              <p style="font-size: 0.82rem; color: var(--text-secondary);" id="jobMatchQualDetail"></p>
+            </div>
+            <div class="glass-card">
+              <div class="skill-category-header"><i class="fa-solid fa-business-time"></i> Experience Match</div>
+              <p style="font-size: 0.82rem; color: var(--text-secondary);" id="jobMatchExpDetail"></p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="glass-card">
+              <div class="card-header"><h3 class="card-title" style="color: var(--accent-emerald);"><i class="fa-solid fa-circle-check"></i> Matching Skills (<span id="jobMatchMatchedCount">8</span>)</h3></div>
+              <div class="skill-badges-wrap" id="jobMatchSkillsMatched"></div>
+            </div>
+            <div class="glass-card">
+              <div class="card-header"><h3 class="card-title" style="color: var(--accent-rose);"><i class="fa-solid fa-circle-xmark"></i> Missing Skills to Acquire (<span id="jobMatchMissingCount">3</span>)</h3></div>
+              <div class="skill-badges-wrap" id="jobMatchSkillsMissing"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="view-multi-job" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+              <h2 class="card-title"><i class="fa-solid fa-table-columns"></i> Multi-Job Comparison Matrix</h2>
+            </div>
+          </div>
+          <div class="job-comparison-matrix" id="multiJobCardsContainer"></div>
+        </section>
+
+        <section id="view-recommendations" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header"><h2 class="card-title"><i class="fa-solid fa-briefcase"></i> AI-Recommended Job Roles</h2></div>
+          </div>
+          <div id="jobRecommendationsList" style="display: flex; flex-direction: column; gap: 1.25rem;"></div>
+        </section>
+
+        <section id="view-roadmap" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header"><h2 class="card-title"><i class="fa-solid fa-map-location-dot"></i> Intelligent Skill-Gap Analysis</h2></div>
+            <div class="grid-3" style="margin-bottom: 1rem;">
+              <div class="glass-card"><div class="skill-category-header" style="color: var(--accent-rose);">🔴 Must Learn</div><div class="skill-badges-wrap" id="gapMustLearnWrap"></div></div>
+              <div class="glass-card"><div class="skill-category-header" style="color: var(--accent-amber);">🟡 Recommended</div><div class="skill-badges-wrap" id="gapRecommendedWrap"></div></div>
+              <div class="glass-card"><div class="skill-category-header" style="color: var(--accent-emerald);">🟢 Already Strong</div><div class="skill-badges-wrap" id="gapStrongWrap"></div></div>
+            </div>
+          </div>
+          <div class="glass-card">
+            <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-list-check"></i> Step-by-Step Learning Path</h3><span class="badge" id="roadmapProgressBadge">0 / 4 Modules Completed</span></div>
+            <div class="roadmap-stepper" id="roadmapStepsList"></div>
+          </div>
+        </section>
+
+        <section id="view-career-path" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;"><div class="card-header"><h2 class="card-title"><i class="fa-solid fa-stairs"></i> Multi-Stage Career Progression Pathway</h2></div></div>
+          <div id="careerPathStagesWrap"></div>
+        </section>
+
+        <section id="view-rewriter" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header"><h2 class="card-title"><i class="fa-solid fa-pen-nib"></i> AI Resume Rewriter & Bullet Booster</h2></div>
+            <div class="grid-2" style="margin-bottom: 1rem;">
+              <div class="form-group"><label class="form-label">Section to Improve</label><select class="form-select" id="rewriterSectionSelect"><option value="summary">Summary</option><option value="bullet">Bullet Point</option><option value="project">Project</option></select></div>
+              <div><label class="form-label">Select Tone & Style</label><div class="rewriter-tone-chips"><div class="tone-chip active" data-tone="impact">🚀 High Impact (XYZ)</div><div class="tone-chip" data-tone="executive">👔 Executive</div><div class="tone-chip" data-tone="modern">✨ Modern</div></div></div>
+            </div>
+            <div class="form-group"><label class="form-label">Original Statement</label><textarea id="rewriterOriginalInput" rows="3" class="form-control"></textarea></div>
+            <button class="btn btn-primary" id="triggerRewriteBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> <span>Generate AI Rewrites</span></button>
+          </div>
+          <div class="glass-card" id="rewriterResultsCard" style="display: none;">
+            <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-sparkles"></i> Optimized Professional Variations</h3></div>
+            <div id="rewrittenOptionsList" style="display: flex; flex-direction: column; gap: 1rem;"></div>
+          </div>
+        </section>
+
+        <section id="view-cover-letter" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header"><h2 class="card-title"><i class="fa-solid fa-envelope-open-text"></i> AI Cover Letter Generator</h2></div>
+            <div class="grid-3" style="margin-bottom: 1rem;">
+              <div class="form-group"><label class="form-label">Role Title</label><input type="text" class="form-control" id="clJobTitleInput" value="Python Developer"></div>
+              <div class="form-group"><label class="form-label">Company Name</label><input type="text" class="form-control" id="clCompanyNameInput" value="Apex Innovations"></div>
+              <div class="form-group"><label class="form-label">Tone</label><select class="form-select" id="clToneSelect"><option value="professional">Professional</option><option value="enthusiastic">Enthusiastic</option><option value="confident">Confident</option></select></div>
+            </div>
+            <button class="btn btn-primary" id="generateCoverLetterBtn"><i class="fa-solid fa-file-signature"></i> <span>Generate Cover Letter</span></button>
+          </div>
+          <div class="glass-card">
+            <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-file-lines"></i> Preview & Editor</h3><button class="btn btn-secondary btn-sm" id="copyCoverLetterBtn"><i class="fa-regular fa-copy"></i> Copy</button></div>
+            <textarea id="coverLetterOutputArea" rows="12" class="form-control"></textarea>
+          </div>
+        </section>
+
+        <section id="view-interview" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header"><h2 class="card-title"><i class="fa-solid fa-user-tie"></i> AI Interview Preparation Studio</h2><span class="badge" id="interviewReadinessBadge">Readiness: 84/100</span></div>
+          </div>
+          <div id="interviewQuestionsList"></div>
+        </section>
+
+        <section id="view-consistency" class="view-panel">
+          <div class="grid-2">
+            <div class="glass-card"><div class="card-header"><h3 class="card-title"><i class="fa-solid fa-magnifying-glass-chart"></i> Consistency Audit</h3></div><div id="consistencySuggestionsList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div></div>
+            <div class="glass-card"><div class="card-header"><h3 class="card-title" style="color: var(--accent-emerald);"><i class="fa-solid fa-trophy"></i> Achievement Detector</h3></div><div id="achievementDetectorList" style="display: flex; flex-direction: column; gap: 0.85rem;"></div></div>
+          </div>
+        </section>
+
+        <section id="view-versions" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header"><h2 class="card-title"><i class="fa-solid fa-code-branch"></i> Resume Version Manager</h2><button class="btn btn-primary btn-sm" id="saveCurrentAsVersionBtn"><i class="fa-solid fa-floppy-disk"></i> Save Active Version</button></div>
+          </div>
+          <div class="grid-3" id="resumeVersionsGrid"></div>
+        </section>
+
+        <section id="view-privacy" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header"><h2 class="card-title"><i class="fa-solid fa-lock"></i> Privacy & Security Center</h2><span class="security-badge-pill"><i class="fa-solid fa-shield-check"></i> Isolated Sandbox</span></div>
+            <div class="grid-3" style="margin-top: 1rem;">
+              <div class="glass-card"><div class="skill-category-header">Data Storage</div><p style="font-size: 0.8rem; color: var(--text-muted);">Client encrypted local storage</p></div>
+              <div class="glass-card"><div class="skill-category-header">Auto-Expiration</div><select class="form-select" id="privacyExpirationSelect"><option value="never">Manual Deletion</option><option value="24h">24 Hours</option><option value="7d">7 Days</option></select></div>
+              <div class="glass-card"><div class="skill-category-header">Export Data</div><a href="/api/privacy/export" class="btn btn-secondary btn-sm" style="width: 100%; margin-top: 4px;"><i class="fa-solid fa-download"></i> JSON Archive</a></div>
+            </div>
+          </div>
+          <div class="glass-card" style="border-color: rgba(244, 63, 94, 0.3);">
+            <div class="card-header"><h3 class="card-title" style="color: var(--accent-rose);"><i class="fa-solid fa-trash-can"></i> Danger Zone</h3></div>
+            <div style="display: flex; gap: 1rem;"><button class="btn btn-danger" id="purgeResumeBtn"><i class="fa-solid fa-eraser"></i> Delete Active Resume</button><button class="btn btn-danger" id="purgeAllDataBtn"><i class="fa-solid fa-skull"></i> Wipe All Data</button></div>
+          </div>
+        </section>
+
+        <section id="view-report" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <div class="card-header"><h2 class="card-title"><i class="fa-solid fa-file-invoice"></i> Master Career Intelligence Report</h2><button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print / PDF Report</button></div>
+          </div>
+          <div class="glass-card" style="padding: 2rem;" id="printableMasterReport">
+            <div style="display: flex; justify-content: space-between; border-bottom: 2px solid var(--border-color); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+              <div><h1 style="font-size: 1.8rem; font-weight: 800;" id="reportCandidateName">Alex Chen</h1><div style="font-size: 1rem; color: var(--primary-light);" id="reportCandidateTitle">CS Graduate</div><div style="font-size: 0.85rem; color: var(--text-muted);" id="reportCandidateContact">alex.chen@email.com</div></div>
+              <div><div style="font-size: 0.8rem; color: var(--text-muted);">Generated</div><div style="font-weight: 700;" id="reportDateDisplay">August 2026</div></div>
+            </div>
+            <div class="grid-4" style="margin-bottom: 2rem;">
+              <div class="glass-card" style="text-align: center;"><div style="font-size: 0.75rem; color: var(--text-muted);">Resume Score</div><div style="font-size: 1.6rem; font-weight: 800; color: var(--primary-light);" id="reportResumeScore">92%</div></div>
+              <div class="glass-card" style="text-align: center;"><div style="font-size: 0.75rem; color: var(--text-muted);">ATS Score</div><div style="font-size: 1.6rem; font-weight: 800; color: var(--accent-emerald);" id="reportAtsScore">88/100</div></div>
+              <div class="glass-card" style="text-align: center;"><div style="font-size: 0.75rem; color: var(--text-muted);">Job Match</div><div style="font-size: 1.6rem; font-weight: 800; color: var(--accent-cyan);" id="reportBestJobMatch">90%</div></div>
+              <div class="glass-card" style="text-align: center;"><div style="font-size: 0.75rem; color: var(--text-muted);">Job Readiness</div><div style="font-size: 1.6rem; font-weight: 800; color: var(--accent-purple);" id="reportReadinessScore">85/100</div></div>
+            </div>
+            <div class="grid-2">
+              <div><div class="skill-category-header" style="color: var(--accent-emerald);">Top Competencies</div><div class="skill-badges-wrap" id="reportTopSkills"></div></div>
+              <div><div class="skill-category-header" style="color: var(--accent-rose);">Skill Opportunities</div><div class="skill-badges-wrap" id="reportMissingSkills"></div></div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- ====================================================================
+         MODAL: ADD JOB APPLICATION TO TRACKER
+         ==================================================================== -->
+    <div class="app-modal-backdrop" id="addJobModal">
+      <div class="app-modal-content">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <h3 style="font-size: 1.15rem; font-weight: 700;"><i class="fa-solid fa-plus-circle" style="color: var(--primary-light);"></i> Add Job Application</h3>
+          <button class="btn-icon" id="closeAddJobModalBtn" style="width: 28px; height: 28px;"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Company Name *</label>
+          <input type="text" id="modalJobCompany" class="form-control" placeholder="e.g. Google, Apple, Microsoft" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Position / Role Title *</label>
+          <input type="text" id="modalJobPosition" class="form-control" placeholder="e.g. Python Developer" required>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label">Current Stage</label>
+            <select class="form-select" id="modalJobStage">
+              <option value="Applied">Applied</option>
+              <option value="Interview">Interviewing</option>
+              <option value="Offer">Offer Received</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Expected Salary</label>
+            <input type="text" id="modalJobSalary" class="form-control" placeholder="e.g. $95,000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Follow-up Date</label>
+          <input type="date" id="modalJobFollowUp" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Notes & Interview Topics</label>
+          <textarea id="modalJobNotes" rows="2" class="form-control" placeholder="Interview scheduled with engineering manager..."></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button class="btn btn-secondary" id="cancelAddJobBtn">Cancel</button>
+          <button class="btn btn-primary" id="saveJobApplicationBtn">Save Application</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         AI CHATBOT FLOATING DRAWER
+         ==================================================================== -->
+    <button class="chatbot-trigger-btn" id="chatbotToggleTrigger" title="Open AI Career Assistant">
+      <i class="fa-solid fa-comments"></i>
+    </button>
+
+    <div class="chatbot-drawer" id="chatbotDrawer">
+      <div class="chatbot-header">
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.9rem;">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div>
+            <div style="font-size: 0.88rem; font-weight: 700;">ResuMatch AI Bot</div>
+            <div style="font-size: 0.68rem; color: var(--accent-emerald);">Context Loaded</div>
+          </div>
+        </div>
+        <button class="btn-icon" id="closeChatbotBtn" style="width: 28px; height: 28px; font-size: 0.8rem;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="chat-bubble bot">
+          👋 Hi there! I'm your AI Resume Assistant. Ask me about your skills, missing requirements, or try our new Voice Mock Mode!
+        </div>
+      </div>
+
+      <div class="chat-suggestions-wrap" id="chatSuggestions">
+        <span class="chat-prompt-chip" data-prompt="What are my strongest skills?">💪 Top Skills</span>
+        <span class="chat-prompt-chip" data-prompt="What skills am I missing for a Python Developer role?">🎯 Missing Skills</span>
+        <span class="chat-prompt-chip" data-prompt="Which job is best for my profile?">💼 Best Job Match</span>
+        <span class="chat-prompt-chip" data-prompt="How can I improve my resume?">🚀 Improve Resume</span>
+      </div>
+
+      <div class="chatbot-input-area">
+        <input type="text" id="chatInput" class="form-control" placeholder="Ask about your resume or career..." style="padding: 0.5rem 0.85rem; font-size: 0.85rem;">
+        <button class="btn btn-primary btn-sm" id="sendChatBtn" style="padding: 0.5rem 0.85rem;">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- App Frontend JavaScript -->
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
